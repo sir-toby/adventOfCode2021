@@ -1,19 +1,12 @@
 import numpy as np
 import pdb
 
-global depth
-depth = 0
-
 def readPackage(binString, overallVersion):
-    global depth
-    depth += 1
-    #breakpoint()
     version = binString[:3]
     overallVersion += int(version, base=2)
-    #print('Version: ', int(version, base=2), 'Overall Version:', overallVersion, depth)
     typeId = binString[3:6]
     content = binString[6:]
-    #if Value:
+    #if Value-Package:
     if int(typeId, base=2) == 4:
         value = ''
         for i in range(0, len(content), 5):
@@ -21,10 +14,9 @@ def readPackage(binString, overallVersion):
             if content[i] == '0':
                 reducedStringStart = 6 + i+5
                 resultValue = int(value, base=2)
-                if depth == 2: print(int(typeId, base=2), resultValue, depth)
                 break
     else:
-        #if operator:
+    #if Operator-Package:
         value = []
         if content[0] == '0':
             subPackageLength = int(content[1:16], base=2)
@@ -61,21 +53,16 @@ def readPackage(binString, overallVersion):
             case 7:
                 if value[0] == value[1]: resultValue = 1
                 else: resultValue = 0
-        #breakpoint()
-        if depth == 2: print(int(typeId, base=2), value, resultValue, depth)
     reducedString = binString[reducedStringStart:]
-    depth -= 1
     return resultValue, overallVersion, reducedString           
             
 
 # Main Part
 filename = '2021_16.txt'
 inputText = (open(filename, mode='r')).read()
-
 inputBinary = (bin(int(inputText, base=16))[2:]).zfill(len(inputText)*4)
 
-overallVersion = 0
 
+overallVersion = 0
 value, overallVersion, newBinString = readPackage(inputBinary, overallVersion)
 print(overallVersion, value)
-
