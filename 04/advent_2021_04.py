@@ -39,6 +39,7 @@ def getMatrixList(filename):
             matrices2.append(matrix)
         else:
             print('Gelöschte Elemente:', matrix)
+    print(matrices2)
     return matrices2
 
 def getMatrix(mat):

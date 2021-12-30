@@ -1,0 +1,12 @@
+1. Strukturierter Input
+2. for i in range(number of steps):
+	extend map border by 4
+	for y=2 bis ymax-2
+		for x=2 bis xmax-2
+			concetate y-1,x-1 bis y+1, x+1
+			find in enhancement algorithm
+			put to new map
+3. count enlighted pixels
+
+
+	

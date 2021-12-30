@@ -1,0 +1,7 @@
+Für jeden Scanner: 
+	Für jeden Beacon: 
+		Speichere Beacon als Liste von Vektoren zu allen anderen Beacons
+	Vergleiche Vektoren von 2 Scannern (Betrag oder permutiert)
+		Falls match: Berechne/Speichere "Umrechnung" und prüfe weitere Vektoren
+		Falls >=12: übertrage alle Beacons in "master-Scanner"
+
